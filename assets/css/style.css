@@ -1,0 +1,23 @@
+.jumbotron{
+    font-family:  'Montserrat', sans-serif;
+    color: white;
+    background: none;
+}
+
+.body{
+    font-family:  'Montserrat', sans-serif;
+}
+
+body, html {
+    height: 100%;
+  }
+
+  .bg{
+      background-image: url("../images/virus.jpg");
+
+      height: 100%;
+      
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+  }

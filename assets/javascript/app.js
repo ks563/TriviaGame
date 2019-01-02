@@ -109,3 +109,17 @@ var myTrivia = [
         correctAnswer: 'b'
     },
 ]
+
+var game = $("#game");
+var results = $("results");
+var submitButton = $("submit");
+
+var triviaGame = function() {
+    
+}
+
+var showResults = function () {
+    
+}
+
+submitButton.addEventListener('click', showResults);

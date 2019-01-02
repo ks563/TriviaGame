@@ -19,7 +19,7 @@ questions
     C. 5
     D. 2
 
-4. Rabies causes a fear of
+4. Rabies causes a fear of:
     A. Dogs
     B. Needles
     C. Water

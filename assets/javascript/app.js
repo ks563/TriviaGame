@@ -1,5 +1,7 @@
-var myTrivia = [
-    {question: "What disease caused an epidemic in Philadephia in 1793 and nearly killed Alexander Hamilton (twice)?",
+//array of objects of questions, objects of answers, and correct answers
+var questions = [
+    {
+        question: "What disease caused an epidemic in Philadephia in 1793 and nearly killed Alexander Hamilton (twice)?",
         answers: {
             a: 'Small Pox',
             b: 'Yellow Fever',
@@ -110,16 +112,42 @@ var myTrivia = [
     },
 ]
 
-var game = $("#game");
-var results = $("results");
-var submitButton = $("submit");
+// var game = $("#game");
+// var results = $("results");
+// var submitButton = $("submit");
+var score = 0;
 
-var triviaGame = function() {
-    
+//make countdown - show
+// setTimeout(triviaCount, 1000 * 120);
+
+//this function needs to display questions
+//show and create radio buttons for answers
+function gameSet() {
+    for (var i = 0; i < questions.length; i++) {
+        var questionP = $("<p>").text(questions[i].question)
+        var questionDiv = $("<div>").append(questionP)
+        for (letter in questions[i].answers) {
+            var inputChoice = $("<input type='radio'>")
+            var label = $("<label>").append(inputChoice)
+            questionDiv.append(label)
+            questionDiv.append(
+                '<label>'
+               + '<input type="radio" name="question"' + i + '" value="' + letter + '">'
+               + letter + ': '
+                + questions[i].answers[letter]
+               + '</label>'
+          );
+      }
+        
+        $("#game").append(questionDiv)
+    }
 }
 
-var showResults = function () {
-    
-}
+//function to check answers
+// userchoice = set up event listener .onchange - or something
+// if user choice === questions[specific question].correctAnswer
 
-submitButton.addEventListener('click', showResults);
+
+// submitButton.addEventListener('click', showResults);
+
+gameSet()

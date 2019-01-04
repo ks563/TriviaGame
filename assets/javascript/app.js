@@ -127,16 +127,24 @@ function gameSet() {
         var questionP = $("<p>").text(questions[i].question)
         var questionDiv = $("<div>").append(questionP)
         for (letter in questions[i].answers) {
+
             var inputChoice = $("<input type='radio'>")
+            //write funcitons to set value 
+            //set different attrs name, data 
+            $(inputChoice).val(letter);
+            $(inputChoice).attr("name", "question")
+            $(inputChoice).attr("data-target", i)
+            
             var label = $("<label>").append(inputChoice)
-            questionDiv.append(label)
-            questionDiv.append(
-                '<label>'
-               + '<input type="radio" name="question"' + i + '" value="' + letter + '">'
-               + letter + ': '
-                + questions[i].answers[letter]
-               + '</label>'
-          );
+            questionDiv.append(label, letter + ": " + questions[i].answers[letter])
+
+            // questionDiv.append(
+            //     '<label>'
+            //    + '<input type="radio" name="question"' + i + '" value="' + letter + '">'
+                // + letter + ': '
+                // + questions[i].answers[letter]
+            //    + '</label>'
+        //   );
       }
         
         $("#game").append(questionDiv)

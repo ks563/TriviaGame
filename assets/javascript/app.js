@@ -115,7 +115,8 @@ var questions = [
 // var game = $("#game");
 // var results = $("results");
 // var submitButton = $("submit");
-var score = 0;
+var correctGuess = 0;
+var wrongGuess
 
 //make countdown - show
 // setTimeout(triviaCount, 1000 * 120);
@@ -130,7 +131,7 @@ function gameSet() {
 
             var inputChoice = $("<input type='radio'>")
             //write funcitons to set value 
-            //set different attrs name, data 
+            //set different attrs name, data  
             $(inputChoice).val(letter);
             $(inputChoice).attr("name", "question")
             $(inputChoice).attr("data-target", i)
@@ -154,6 +155,14 @@ function gameSet() {
 //function to check answers
 // userchoice = set up event listener .onchange - or something
 // if user choice === questions[specific question].correctAnswer
+function checkAnswer () {
+    userChoice = $(".question").click()
+    if (userchoice === questions[i].correctAnswers) {
+        correctGuess++
+    } else {
+        wrongGuess++
+    }
+}
 
 
 // submitButton.addEventListener('click', showResults);

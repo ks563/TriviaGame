@@ -1,6 +1,6 @@
 .jumbotron{
     font-family:  'Montserrat', sans-serif;
-    color: white;
+    color: black;
     background: none;
 }
 
@@ -10,11 +10,11 @@
 
 body, html {
     height: 100%;
-    color: white;
+    color: black;
   }
 
   .bg{
-      background-image: url("../images/virus.jpg");
+      /* background-image: url("../images/virus.jpg"); */
 
       height: 100%;
       

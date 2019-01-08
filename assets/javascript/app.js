@@ -116,7 +116,7 @@ var questions = [
  var results = $("results");
 // var submitButton = $("submit");
 var correctGuess = 0;
-var wrongGuess;
+var wrongGuess = 0;
 
 //make countdown - show
 // setTimeout(triviaCount, 1000 * 120);
@@ -155,6 +155,8 @@ $(".radioButton").on("change", function () {
     if (questValue === questions[questData].correctAnswer) {
         console.log("correct answer");
         correctGuess++
+    } else {
+        wrongGuess++
     }
 })
 

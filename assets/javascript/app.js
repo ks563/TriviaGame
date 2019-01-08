@@ -113,10 +113,10 @@ var questions = [
 ]
 
 // var game = $("#game");
-// var results = $("results");
+ var results = $("results");
 // var submitButton = $("submit");
 var correctGuess = 0;
-var wrongGuess
+var wrongGuess;
 
 //make countdown - show
 // setTimeout(triviaCount, 1000 * 120);
@@ -133,38 +133,34 @@ function gameSet() {
             //write funcitons to set value 
             //set different attrs name, data  
             $(inputChoice).val(letter);
-            $(inputChoice).attr("name", "question")
+            $(inputChoice).attr("name", "question"+i)
             $(inputChoice).attr("data-target", i)
+            $(inputChoice).addClass("radioButton")
             
             var label = $("<label>").append(inputChoice)
             questionDiv.append(label, letter + ": " + questions[i].answers[letter])
-
-            // questionDiv.append(
-            //     '<label>'
-            //    + '<input type="radio" name="question"' + i + '" value="' + letter + '">'
-                // + letter + ': '
-                // + questions[i].answers[letter]
-            //    + '</label>'
-        //   );
       }
         
         $("#game").append(questionDiv)
     }
 }
 
-//function to check answers
-// userchoice = set up event listener .onchange - or something
-// if user choice === questions[specific question].correctAnswer
-function checkAnswer () {
-    userChoice = $(".question").click()
-    if (userchoice === questions[i].correctAnswers) {
-        correctGuess++
-    } else {
-        wrongGuess++
-    }
-}
-
-
-// submitButton.addEventListener('click', showResults);
-
 gameSet()
+
+$(".radioButton").on("change", function () {
+    console.log($(this).val())
+    console.log($(this).attr("data-target"))
+    var questValue = $(this).val();
+    var questData = $(this).attr("data-target");
+    if (questValue === questions[questData].correctAnswer) {
+        console.log("correct answer");
+        correctGuess++
+    }
+})
+
+
+ 
+//function that takes the correctGuess and writes it to the dom
+//set timer when timer is done, calls function ^^ 
+//function is also called when the submit button is pressed
+//use jquery to write to results div

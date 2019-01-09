@@ -112,14 +112,10 @@ var questions = [
     },
 ]
 
-// var game = $("#game");
  var results = $("results");
 // var submitButton = $("submit");
 var correctGuess = 0;
 var wrongGuess = 0;
-
-//make countdown - show
-// setTimeout(triviaCount, 1000 * 120);
 
 //this function needs to display questions
 //show and create radio buttons for answers
@@ -145,24 +141,40 @@ function gameSet() {
     }
 }
 
-gameSet()
 
 $(".radioButton").on("change", function () {
-    console.log($(this).val())
-    console.log($(this).attr("data-target"))
+    // console.log($(this).val())
+    // console.log($(this).attr("data-target"))
     var questValue = $(this).val();
     var questData = $(this).attr("data-target");
     if (questValue === questions[questData].correctAnswer) {
-        console.log("correct answer");
+        // console.log("correct answer");
         correctGuess++
     } else {
         wrongGuess++
     }
 })
 
-
- 
 //function that takes the correctGuess and writes it to the dom
 //set timer when timer is done, calls function ^^ 
 //function is also called when the submit button is pressed
 //use jquery to write to results div
+var guessesC = $("<p>").text("You Guessed: " + correctGuess + " Correctly!")
+var guessesIc = $("<p>").text("You Guessed: " + wrongGuess + " Incorrectly!")
+
+$("#submit").click(function () {
+    // console.log("button clicked")
+    
+    $("#correctResults").append(guessesC)
+    $("#incorrectResults").append(guessesIc)
+});
+
+//make countdown - show
+setTimeout(triviaCount, 1000 * 120);
+
+function triviaCount() {
+    $("#correctResults").append(guessesC);
+    $("#incorrectResults").append(guessesIc)
+ }
+
+gameSet()

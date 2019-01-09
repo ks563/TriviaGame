@@ -160,24 +160,44 @@ $(".radioButton").on("change", function () {
 //function is also called when the submit button is pressed
 //use jquery to write to results div
 var guessesC = $("<p>").html("<h2>You Guessed: " + correctGuess + " Correctly!</h2>")
-var guessesIc = $("<p>").html("<h2>You Guessed: " + wrongGuess + " Incorrectly!/h2>")
+var guessesIc = $("<p>").html("<h2>You Guessed: " + wrongGuess + " Incorrectly!</h2>")
 
 // guesses aren't incrementing
 
 $("#submit").click(function () {
     // console.log("button clicked")
+    stop();
     $("#game").empty()
+    $("#submit").empty()
     $("#correctResults").append(guessesC)
     $("#incorrectResults").append(guessesIc)
+
 });
-
+var intervalId;
+var number = 90;
 //make countdown - show
-setTimeout(triviaCount, 1000 * 60);
 
-function triviaCount() {
-    $("#game").empty()
-    $("#correctResults").append(guessesC)
-    $("#incorrectResults").append(guessesIc)
-    //hide game div
- }
+function run() {
+    clearInterval(intervalId);
+    intervalId = setInterval(decrement, 1000);
+  }
 
+
+function decrement() {
+    number--;
+    $("#timer").html("<h2> Time Remaining: " + number + "</h2>");
+    
+    if (number === 0) {
+        stop();
+        $("#game").empty()
+        $("#submit").empty()
+        $("#correctResults").append(guessesC)
+        $("#incorrectResults").append(guessesIc)
+    }
+}
+ 
+function stop() {
+    clearInterval(intervalId);
+}
+
+run();

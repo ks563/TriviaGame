@@ -140,7 +140,7 @@ function gameSet() {
         $("#game").append(questionDiv)
     }
 }
-
+gameSet()
 
 $(".radioButton").on("change", function () {
     // console.log($(this).val())
@@ -159,22 +159,25 @@ $(".radioButton").on("change", function () {
 //set timer when timer is done, calls function ^^ 
 //function is also called when the submit button is pressed
 //use jquery to write to results div
-var guessesC = $("<p>").text("You Guessed: " + correctGuess + " Correctly!")
-var guessesIc = $("<p>").text("You Guessed: " + wrongGuess + " Incorrectly!")
+var guessesC = $("<p>").html("<h2>You Guessed: " + correctGuess + " Correctly!</h2>")
+var guessesIc = $("<p>").html("<h2>You Guessed: " + wrongGuess + " Incorrectly!/h2>")
+
+// guesses aren't incrementing
 
 $("#submit").click(function () {
     // console.log("button clicked")
-    
+    $("#game").empty()
     $("#correctResults").append(guessesC)
     $("#incorrectResults").append(guessesIc)
 });
 
 //make countdown - show
-setTimeout(triviaCount, 1000 * 120);
+setTimeout(triviaCount, 1000 * 60);
 
 function triviaCount() {
-    $("#correctResults").append(guessesC);
+    $("#game").empty()
+    $("#correctResults").append(guessesC)
     $("#incorrectResults").append(guessesIc)
+    //hide game div
  }
 
-gameSet()

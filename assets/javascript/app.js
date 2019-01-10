@@ -147,13 +147,16 @@ $(".radioButton").on("change", function () {
     // console.log($(this).attr("data-target"))
     var questValue = $(this).val();
     var questData = $(this).attr("data-target");
-    if (questValue === questions[questData].correctAnswer) {
-        // console.log("correct answer");
+    if (questValue == questions[questData].correctAnswer) {
+        console.log("correct answer");
         correctGuess++
     } else {
+        console.log("wrong answer");
         wrongGuess++
     }
 })
+
+//it's not incrementing in the variables and I think it has to do with the fact that my answers have different values. when they are console logged they show up on different lines
 
 //function that takes the correctGuess and writes it to the dom
 //set timer when timer is done, calls function ^^ 
@@ -171,6 +174,7 @@ $("#submit").click(function () {
     $("#submit").empty()
     $("#correctResults").append(guessesC)
     $("#incorrectResults").append(guessesIc)
+    // $(".bg").css("background-image", "url('../images/poison.jpg')") does not show up
 
 });
 var intervalId;

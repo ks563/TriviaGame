@@ -149,10 +149,12 @@ $(".radioButton").on("change", function () {
     var questData = $(this).attr("data-target");
     if (questValue == questions[questData].correctAnswer) {
         console.log("correct answer");
-        correctGuess++
+        correctGuess++;
+        console.log(correctGuess);
     } else {
         console.log("wrong answer");
-        wrongGuess++
+        wrongGuess++;
+        console.log(wrongGuess);
     }
 })
 
@@ -162,16 +164,19 @@ $(".radioButton").on("change", function () {
 //set timer when timer is done, calls function ^^ 
 //function is also called when the submit button is pressed
 //use jquery to write to results div
-var totalCorrectGuesses = parseInt(correctGuess)
-var totalIncorrectGuesses = parseInt(wrongGuess)
-var guessesC = $("<p>").html("<h2>You Guessed: " + totalCorrectGuesses + " Correctly!</h2>")
-var guessesIc = $("<p>").html("<h2>You Guessed: " + totalIncorrectGuesses + " Incorrectly!</h2>")
+// var totalCorrectGuesses = parseInt(correctGuess)
+// var totalIncorrectGuesses = parseInt(wrongGuess)
+// var guessesC = $("<p>").html("<h2>You Guessed: " + correctGuess + " Correctly!</h2>")
+// var guessesIc = $("<p>").html("<h2>You Guessed: " + wrongGuess + " Incorrectly!</h2>")
 
 // guesses aren't incrementing
 
 $("#submit").click(function () {
     // console.log("button clicked")
     stop();
+    var guessesC = $("<p>").html("<h2>You Guessed: " + correctGuess + " Correctly!</h2>")
+    var guessesIc = $("<p>").html("<h2>You Guessed: " + wrongGuess + " Incorrectly!</h2>")
+
     $("#game").empty()
     $("#submit").hide()
     $("#correctResults").append(guessesC)
@@ -195,6 +200,9 @@ function decrement() {
     
     if (number === 0) {
         stop();
+        var guessesC = $("<p>").html("<h2>You Guessed: " + correctGuess + " Correctly!</h2>")
+        var guessesIc = $("<p>").html("<h2>You Guessed: " + wrongGuess + " Incorrectly!</h2>")
+
         $("#game").empty()
         $("#submit").hide()
         $("#correctResults").append(guessesC)

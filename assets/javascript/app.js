@@ -162,8 +162,10 @@ $(".radioButton").on("change", function () {
 //set timer when timer is done, calls function ^^ 
 //function is also called when the submit button is pressed
 //use jquery to write to results div
-var guessesC = $("<p>").html("<h2>You Guessed: " + correctGuess + " Correctly!</h2>")
-var guessesIc = $("<p>").html("<h2>You Guessed: " + wrongGuess + " Incorrectly!</h2>")
+var totalCorrectGuesses = parseInt(correctGuess)
+var totalIncorrectGuesses = parseInt(wrongGuess)
+var guessesC = $("<p>").html("<h2>You Guessed: " + totalCorrectGuesses + " Correctly!</h2>")
+var guessesIc = $("<p>").html("<h2>You Guessed: " + totalIncorrectGuesses + " Incorrectly!</h2>")
 
 // guesses aren't incrementing
 
@@ -171,10 +173,10 @@ $("#submit").click(function () {
     // console.log("button clicked")
     stop();
     $("#game").empty()
-    $("#submit").empty()
+    $("#submit").hide()
     $("#correctResults").append(guessesC)
     $("#incorrectResults").append(guessesIc)
-    // $(".bg").css("background-image", "url('../images/poison.jpg')") does not show up
+    $(".bg").css("background-image", "url('../images/poison.jpg')")  //not showing up. not sure why. is saying not found but same file path as other bg image
 
 });
 var intervalId;
@@ -194,9 +196,10 @@ function decrement() {
     if (number === 0) {
         stop();
         $("#game").empty()
-        $("#submit").empty()
+        $("#submit").hide()
         $("#correctResults").append(guessesC)
         $("#incorrectResults").append(guessesIc)
+        $(".bg").css("background-image", "url('../images/poison.jpg')")  //not showing up. not sure why. is saying not found but same file path as other bg image
     }
 }
  
